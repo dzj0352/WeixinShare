@@ -52,13 +52,14 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
  
     <!-- myBatis文件 -->
     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    	<!-- 实例化sqlSession 需要上诉数据源 -->
         <property name="dataSource" ref="dataSource" />
         <!-- 自动扫描entity目录, 省掉Configuration.xml里的手工配置 -->
-        <property name="mapperLocations" value="classpath:com/cuiyongzhi/web/mapping/*.xml" />
+        <property name="mapperLocations" value="classpath:com/bj/web/mapping/*.xml" />
     </bean>
  
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-        <property name="basePackage" value="com.cuiyongzhi.web.dao" />
+        <property name="basePackage" value="com.bj.web.dao" />
         <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory" />
     </bean>
  
@@ -93,7 +94,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
         </tx:attributes>
     </tx:advice>
     <aop:config>
-        <aop:pointcut id="transactionPointcut" expression="execution(* com.cuiyongzhi.web.service..*Impl.*(..))" />
+        <aop:pointcut id="transactionPointcut" expression="execution(* com.bj.web.service..*Impl.*(..))" />
         <aop:advisor pointcut-ref="transactionPointcut" advice-ref="transactionAdvice" />
     </aop:config>
  
@@ -104,7 +105,7 @@ http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
     <bean id="druid-stat-pointcut" class="org.springframework.aop.support.JdkRegexpMethodPointcut" scope="prototype">
         <property name="patterns">
             <list>
-                <value>com.cuiyongzhi.web.service.*</value>
+                <value>com.bj.web.service.*</value>
             </list>
         </property>
     </bean>
