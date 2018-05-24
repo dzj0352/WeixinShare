@@ -1,5 +1,9 @@
 package com.bj.web.dao;
 
+import java.util.List;
+
+import org.apache.ibatis.annotations.Param;
+
 import com.bj.web.entity.LeaveWord;
 
 public interface LeaveWordMapper {
@@ -14,4 +18,7 @@ public interface LeaveWordMapper {
     int updateByPrimaryKeySelective(LeaveWord record);
 
     int updateByPrimaryKey(LeaveWord record);
+    
+    List<LeaveWord> queryUserListLikeName(@Param("name") String name);  
+
 }

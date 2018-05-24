@@ -102,4 +102,15 @@ public class LeaveWord {
     public void setFileUrl(String fileUrl) {
         this.fileUrl = fileUrl == null ? null : fileUrl.trim();
     }
+
+	@Override
+	public String toString() {
+		return "LeaveWord [id=" + id + ", name=" + name + ", sex=" + sex
+				+ ", telPhone=" + telPhone + ", content=" + content
+				+ ", imageUrl=" + imageUrl + ", email=" + email
+				+ ", createDate=" + createDate + ", subject=" + subject
+				+ ", fileUrl=" + fileUrl + "]";
+	}
+    
+    
 }
