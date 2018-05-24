@@ -31,16 +31,26 @@ public class LeaveWordController {
 	@RequestMapping("testQueryUserListLikeName")
 	public void testQueryUserListLikeName() {  
 	    //设置分页条件，Parameters:pageNum 页码pageSize 每页显示数量count 是否进行count查询  
-	    PageHelper.startPage(0, 3, true);  
-	    List<LeaveWord> leaveWords = this.leaveWordMapper.queryUserListLikeName("lily");  
-	   /* PageInfo<LeaveWord> pageInfo = new PageInfo<LeaveWord>(leaveWords);  
+		//注意：需要从1开始
+	    PageHelper.startPage(1, 3, true);  
+	    List<LeaveWord> leaveWords = this.leaveWordMapper.queryUserListLikeName("lily");
+	    
+	    PageHelper.startPage(1, 3, true);  
+	    List<LeaveWord> leaveWordb = this.leaveWordMapper.queryUserListLikeName("lily"); 
+	    PageInfo<LeaveWord> pageInfo = new PageInfo<LeaveWord>(leaveWords);  
 	      
 	    //打印分页信息  
 	    System.out.println("数据总数：" + pageInfo.getTotal());  
 	    System.out.println("数据总页数：" + pageInfo.getPages());  
-	    System.out.println("最后一页：" + pageInfo.getLastPage()); */ 
+	    System.out.println("最后一页：" + pageInfo.getLastPage());  
 	    for (LeaveWord user : leaveWords) {  
 	        System.out.println("============1222222222222"+user.toString());  
 	    }  
 	}  
+	@RequestMapping("getLeaveWordById")
+	public void getLeaveWordById(){
+		LeaveWord leaveWord = leaveWordMapper.selectByPrimaryKey("e1acaa252eb7473c867a9e8ef8d47cb4");
+		LeaveWord leaveWord1 = leaveWordMapper.selectByPrimaryKey("e1acaa252eb7473c867a9e8ef8d47cb4");
+		System.out.println("============"+leaveWord.toString());
+	}
 }

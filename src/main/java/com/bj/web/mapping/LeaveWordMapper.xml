@@ -154,7 +154,7 @@
 		where id = #{id,jdbcType=VARCHAR}
 	</update>
 	
-	<select id="queryUserListLikeName" parameterType="String" resultType="com.bj.web.entity.LeaveWord">  
+	<select id="queryUserListLikeName" parameterType="String" resultType="com.bj.web.entity.LeaveWord" useCache="true">  
     SELECT <include refid="Base_Column_List"/> FROM leave_word WHERE name LIKE '%${name}%'  
 </select>  
 </mapper>
