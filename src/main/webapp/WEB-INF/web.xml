@@ -14,6 +14,9 @@
         <param-value>classpath:log4j.properties</param-value>
     </context-param>
     <listener>
+	    <listener-class>se.jiderhamn.classloader.leak.prevention.ClassLoaderLeakPreventorListener</listener-class>
+	</listener>
+    <listener>
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
     <context-param>

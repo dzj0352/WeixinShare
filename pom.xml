@@ -232,19 +232,42 @@
 			<artifactId>commons-collections</artifactId>
 			<version>20040616</version>
 		</dependency>
+		<!-- 避免 部署时内存泄露 -->
+		<dependency>
+		    <groupId>se.jiderhamn.classloader-leak-prevention</groupId>
+		    <artifactId>classloader-leak-prevention-servlet</artifactId>
+		    <version>2.1.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<finalName>WeixinShare</finalName>
 		
 		<plugins>  
 			<plugin>  
-			<groupId>org.apache.maven.plugins</groupId>  
-			<artifactId>maven-compiler-plugin</artifactId>  
-			<configuration>  
-			<source>1.8</source>  
-			<target>1.8</target>  
-			</configuration>  
-			</plugin>  
+				<groupId>org.apache.maven.plugins</groupId>  
+				<artifactId>maven-compiler-plugin</artifactId>  
+				<configuration>  
+				<source>1.8</source>  
+				<target>1.8</target>  
+				</configuration>  
+			</plugin> 
+			<!-- 远程部署tomcat  参考文档https://www.cnblogs.com/xyb930826/p/5725340.html
+				执行tomcat7:deploy
+			-->
+			<plugin>
+			    <groupId>org.apache.tomcat.maven</groupId>
+			    <artifactId>tomcat7-maven-plugin</artifactId>
+			    <version>2.2</version>
+			
+			    <configuration>
+			        <url>http://140.143.66.231:8080/manager/text</url>
+			        <username>admin</username>
+			        <password>123456</password>
+			        <update>true</update>
+			        <path>/weixin</path>
+			    </configuration>
+			
+			</plugin> 
 		</plugins>
 	</build>
 </project>
